@@ -49,4 +49,9 @@
   transform: scaleX(1);
 }
 
+.bannerSection{
+  display: flex;
+  flex-direction: row;
+}
+
 
