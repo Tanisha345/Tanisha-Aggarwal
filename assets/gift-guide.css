@@ -29,4 +29,9 @@
   transition: all 0.4s linear;
 }
 
+.gg-btn:hover{
+  background-color: #FFF554;
+  color: #000000;
+}
+
 
