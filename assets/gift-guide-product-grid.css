@@ -22,3 +22,9 @@
 .product-image{
     position: relative;
 }
+
+.plus-icon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
