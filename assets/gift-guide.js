@@ -158,6 +158,8 @@
   });
 })();
 
+
+// open the modal on clicking plus icon of the product
 document.addEventListener('DOMContentLoaded', function() {
   const plusIcons = document.querySelectorAll('.plus-icon');
   const modal = document.getElementById('productModal');
