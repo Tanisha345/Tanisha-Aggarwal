@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
 .gg-announcement {
   width: 100%;
-  align-items:center;
+  height: fit-content;
 }
 
 .gg-announcement__bar{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items:center;
   padding: 20px;
   background: #F5F5F5;
 }
