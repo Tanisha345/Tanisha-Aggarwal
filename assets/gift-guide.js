@@ -157,3 +157,30 @@
     });
   });
 })();
+
+document.addEventListener('DOMContentLoaded', function() {
+  const plusIcons = document.querySelectorAll('.plus-icon');
+  const modal = document.getElementById('productModal');
+  const closeModal = modal.querySelector('.close');
+
+  plusIcons.forEach(icon => {
+    icon.addEventListener('click', function() {
+      document.getElementById('modalTitle').innerText = this.dataset.title;
+      document.getElementById('modalImage').src = this.dataset.image;
+      document.getElementById('modalDescription').innerText = this.dataset.description;
+      document.getElementById('modalLink').href = this.dataset.link;
+      modal.style.display = 'block';
+    });
+  });
+
+  closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  window.addEventListener('click', (event) => {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  });
+});
+
