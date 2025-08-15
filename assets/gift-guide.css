@@ -1,9 +1,10 @@
 gg-announcement {
   width: 100%;
+  background: yellow;
 }
 
 gg-announcement__bar{
   display: flex;
   flex-direction: row;
-  background-color: yellow;
+  background: yellow;
 }
