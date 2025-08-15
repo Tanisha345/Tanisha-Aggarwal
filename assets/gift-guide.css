@@ -15,6 +15,6 @@
   font-family: 'Jost', sans-serif;
 }
 
-/* .gg-btn{
-  decoration: none;
-} */
+.gg-btn{
+  text-decoration: none;
+}
