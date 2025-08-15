@@ -85,5 +85,34 @@
   width: 60%;
 }
 
+.gg-shop-btn{
+  padding: 8px 20px;
+  font-weight: 400;
+  border: none;
+  background-color: #FFF554;
+  color: #000000;
+  transition: all 0.4s ease-out;
+  position: relative;
+}
+
+.gg-shop-btn:hover{
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.gg-shop-btn::before{
+  content: "";
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  z-index: -1;
+  transition: transform 0.5s;
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+}
+
+.gg-shop-btn:hover::before{
+  transform: scaleX(1);
+}
+
 
 
