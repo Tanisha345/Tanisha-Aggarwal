@@ -65,6 +65,7 @@
   width: 40%;
   justify-content: center;
   margin-left: 100px;
+  margin-bottom: 20px;
 }
 
 .heading{
@@ -82,9 +83,9 @@
 
 
 
-.banner-section-textarea{
+.banner-section-imagearea{
   width: 60%;
-  margin-bottom: 20px;
+  
 }
 
 .gg-shop-btn{
