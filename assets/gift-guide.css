@@ -63,7 +63,6 @@
   flex-direction: column;
   width: 40%;
   justify-content: center;
-  align-items: center;
 }
 
 .heading{
@@ -76,7 +75,7 @@
   font-weight: 400;
   font-size: 20px;
   color: #000000;
-  margin: 20px 100px;
+  margin: 20px ;
   justify-self: center;
 }
 
