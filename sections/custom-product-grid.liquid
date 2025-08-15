@@ -8,46 +8,5 @@
 {{ 'gift-guide-product-grid.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'gift-guide.js' | asset_url }}" defer="defer"></script>
 
-<section class="gg-grid">
-  <div class="gg-container" data-gg-grid-root
-       data-addon-variant-id="{% if section.settings.addon_product and section.settings.addon_product.selected_or_first_available_variant %}{{ section.settings.addon_product.selected_or_first_available_variant.id }}{% endif %}">
-    <h2 class="gg-grid__title">{{ section.settings.title }}</h2>
-
-    <div class="gg-grid__wrap">
-      {% for block in section.blocks %}
-        {% assign product = block.settings.product %}
-        {% if product != blank %}
-          <article class="gg-card">
-            {% if product.featured_image %}
-              {{ product.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: product.title }}
-            {% endif %}
-            <button class="gg-hotspot" type="button"
-                    data-gg-hotspot
-                    aria-haspopup="dialog"
-                    aria-label="Quick view"
-                    data-handle="{{ product.handle }}">+</button>
-          </article>
-        {% endif %}
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-{%- comment -%} A single modal element will be injected by JS when first opened {%- endcomment -%}
-
-{% schema %}
-{
-  "name": "Gift Guide Grid (Custom)",
-  "settings": [
-    { "type": "text", "id": "title", "label": "Title", "default": "Tisso vison in the wild" },
-    { "type": "product", "id": "addon_product", "label": "Auto-add product (Soft Winter Jacket)" }
-  ],
-  "blocks": [
-    { "type": "product", "name": "Grid Item", "settings": [
-      { "type": "product", "id": "product", "label": "Product" }
-    ]}
-  ],
-  "max_blocks": 6,
-  "presets": [{ "name": "Gift Guide Grid (Custom)" }]
-}
-{% endschema %}
+<div class="product-grid-container">
+</div>
