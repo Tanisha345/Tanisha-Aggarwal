@@ -9,7 +9,7 @@
 <script src="{{ 'gift-guide.js' | asset_url }}" defer="defer"></script>
 
 <div class="product-grid-container">
-  <div class="heading-grid">{{ section.settings.heading-text }}</div>
+  <div class="product-grid-heading">{{ section.settings.heading-text }}</div>
   <div class="grid-container">
     {% for products in collections.gift-guide.products %}
        {% for media in products.media %}
