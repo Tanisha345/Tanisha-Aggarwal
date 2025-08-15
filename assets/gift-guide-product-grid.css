@@ -21,6 +21,7 @@
 
 .product-image{
     position: relative;
+    overflow: hidden;
 }
 
 .plus-icon{
