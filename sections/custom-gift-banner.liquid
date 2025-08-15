@@ -11,10 +11,9 @@
    <img src= {{ 'tissovison.png' | asset_url }} alt="Shop logo" width="150" height="20">
     <div class="gg-announcement__msg">{{ section.settings.announce_text }}</div>
     <div class="gg-announcement__cta">
-      <a class="gg-btn" href="{{ section.settings.announce_button_url }}">
-        {{ section.settings.announce_button_label }}
-        <span class="gg-btn__arrow">→</span>
-      </a>
+      <button class="gg-btn" href="{{ section.settings.announce_button_url }}">
+        {{ section.settings.announce_button_label }} →
+      </button>
     </div>
   </div>
 </section>
