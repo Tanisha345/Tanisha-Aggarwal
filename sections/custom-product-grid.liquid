@@ -10,7 +10,7 @@
 
 <div class="product-grid-container">
   <div class="heading-grid">{{ section.settings.heading-text }}</div>
-  <div>
+  <div class="grid-container">
     {% for products in collections.gift-guide.products %}
        {% for media in products.media %}
         <img src="{{ media.src | img_url: '600x600' }}" alt="{{ products.title }}" width="200" height="200">
