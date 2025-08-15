@@ -8,6 +8,7 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 20px;
+  background: #F5F5F5;
 }
 
 .gg-announcement__msg{
