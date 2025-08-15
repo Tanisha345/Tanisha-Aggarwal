@@ -6,3 +6,9 @@
     gap: 30px;
     padding: 20px;
 }
+
+.heading{
+    font-family: "Lustria", serif;
+    font-size: 36px;
+    letter-spacing: 0px;
+}
