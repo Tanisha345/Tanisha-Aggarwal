@@ -55,7 +55,7 @@
 .banner-section{
   display: flex;
   flex-direction: row;
-  margin-bottom: 20px;
+  
 }
 
 .banner-section-textarea{
@@ -84,6 +84,7 @@
 
 .banner-section-textarea{
   width: 60%;
+  margin-bottom: 20px;
 }
 
 .gg-shop-btn{
