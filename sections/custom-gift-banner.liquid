@@ -20,11 +20,9 @@
   <div class="banner-section-textarea">
     <div class="heading">{{ section.settings.heading }}</div>
     <div class="subheading">{{ section.settings.subtext }}</div>
-    <div class="gg-announcement__cta">
-      <button class="gg-btn btn-banner" href="{{ section.settings.shop_button_url }}">
-        {{ section.settings.shop_button_label }} →
+    <button class="gg-btn" href="{{ section.settings.announce_button_url }}">
+        {{ section.settings.announce_button_label }} →
       </button>
-    </div>
   </div>
   <div class="banner-section-imagearea">
     <img src="{{ 'Frame2.png' | asset_url }}" alt="banner" width="100%" height="100%">
