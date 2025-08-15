@@ -12,7 +12,9 @@
   <div class="heading-grid">{{ section.settings.heading-text }}</div>
   <div>
     {% for products in collections.gift-guide.products %}
-      <img src="{products.media}" alt="{products.title}" width="200" height="200">
+       {% for media in products.media %}
+        <img src="{{ media.src | img_url: '600x600' }}" alt="{{ products.title }}" width="200" height="200">
+        {% endfor %}
       {% endfor %}
     
   </div>
