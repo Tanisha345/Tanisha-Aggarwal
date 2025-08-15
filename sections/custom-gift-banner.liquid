@@ -20,12 +20,7 @@
 </section>
 
 <section class="gg-hero">
-  {% if section.settings.bg_image != blank %}
-    {{ section.settings.bg_image | image_url: width: 2880 | image_tag: class: 'gg-hero__bg', alt: section.settings.heading }}
-  {% else %}
-   
-  {% endif %}
-
+ 
   <div class="gg-hero__inner gg-container">
     <h1 class="gg-hero__heading">{{ section.settings.heading }}</h1>
     <p class="gg-hero__subtext">{{ section.settings.subtext }}</p>
