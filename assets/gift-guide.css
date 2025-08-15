@@ -6,7 +6,7 @@
 }
 .gg-announcement {
   width: 100%;
-  height: fit-content;
+  height: 64px;
 }
 
 .gg-announcement__bar{
