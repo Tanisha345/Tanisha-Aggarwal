@@ -69,6 +69,15 @@
   color: #000000;
 }
 
+.subtext{
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #000000;
+}
+
+
+
 .banner-section-textarea{
   width: 60%;
 }
