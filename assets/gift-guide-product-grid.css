@@ -20,6 +20,10 @@
 }
 
 .product-image{
+
+}
+
+.image-container{
     position: relative;
     overflow: hidden;
 }
