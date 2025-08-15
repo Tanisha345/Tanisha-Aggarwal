@@ -20,7 +20,7 @@
 }
 
 .gg-btn{
-  padding: 4px 20px;
+  padding: 8px 20px;
   font-family: 'Jost', sans-serif;
   font-weight: 400;
   border: none;
@@ -31,7 +31,7 @@
 
 .gg-btn:hover{
   background-color: #000000;
-  color: #FFF554;
+  color: #FFFFFF;
 }
 
 
