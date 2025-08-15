@@ -16,7 +16,8 @@
 }
 
 .gg-announcement__cta{
-background: yellow;
+  background: #FFF544;
+  padding: 10px;
 }
 
 .gg-btn{
