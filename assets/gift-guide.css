@@ -119,5 +119,8 @@
   transform: scaleX(1);
 }
 
+.gg-bottom-bar{
+  align-items:center;
+}
 
 
