@@ -29,7 +29,7 @@
   
  .gg-btn{
   color: #FFF544;
-  transition: all 3000ms ease-out;
+  transition: all 3000ms ease-in;
   }
 }
 
