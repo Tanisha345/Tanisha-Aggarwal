@@ -26,10 +26,9 @@
 
 .gg-announcement__cta:hover{
   background: #000000;
-  transition: margin-left 0.3s ease;
  .gg-btn{
   color: #FFF544;
-  transition: all 0.3s ease;
+  transition: margin-left 0.3s ease;
   }
 }
 
