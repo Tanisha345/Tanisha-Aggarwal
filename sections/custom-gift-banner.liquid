@@ -23,7 +23,7 @@
   {% if section.settings.bg_image != blank %}
     {{ section.settings.bg_image | image_url: width: 2880 | image_tag: class: 'gg-hero__bg', alt: section.settings.heading }}
   {% else %}
-    <img class="gg-hero__bg" src="https://cdn.shopify.com/s/files/1/0000/0000/files/placeholder-hero.png" alt="">
+    <img class="gg-hero__bg" src="https://cdn.shopify.com/s/files/1/0000/0000/files/placeholder-hero.png" alt="" width=1200 height=400>
   {% endif %}
 
   <div class="gg-hero__inner gg-container">
