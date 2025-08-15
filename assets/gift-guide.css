@@ -67,19 +67,16 @@
 }
 
 .heading{
-  font-family: 'Jost', sans-serif;
   font-weight: 500;
   font-size: 70px;
   color: #000000;
 }
 
 .subheading{
-  font-family: 'Jost', sans-serif;
   font-weight: 400;
   font-size: 20px;
   color: #000000;
   margin: 0px 30px;
-  letter-spacing: 0px;
 }
 
 
