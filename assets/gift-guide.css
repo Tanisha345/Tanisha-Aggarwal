@@ -15,6 +15,10 @@
   font-family: 'Jost', sans-serif;
 }
 
+.gg-announcement__cta{
+background: yellow;
+}
+
 .gg-btn{
   text-decoration: none;
 }
