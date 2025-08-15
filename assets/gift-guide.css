@@ -89,15 +89,16 @@
   padding: 8px 20px;
   font-weight: 400;
   border: none;
-  background-color: #FFF554;
-  color: #000000;
+  background-color: #000000;
+  color: #FFFFFF;
   transition: all 0.4s ease-out;
   position: relative;
 }
 
 .gg-shop-btn:hover{
-  background-color: #000000;
-  color: #FFFFFF;
+ 
+  background-color: #FFF554;
+  color: #000000;
 }
 
 .gg-shop-btn::before{
