@@ -26,6 +26,7 @@
   border: none;
   background-color: #FFF554;
   color: #000000;
+  transition: all 0.4s linear;
 }
 
 
