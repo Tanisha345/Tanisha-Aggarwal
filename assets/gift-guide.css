@@ -26,6 +26,7 @@
 
 .gg-announcement__cta:hover{
   background: #000000;
+  color: #FFF544;
 }
 
 .gg-btn{
@@ -36,5 +37,5 @@
 }
 
 .gg-btn:hover{
-    color: #FFF544;
+    
 }
