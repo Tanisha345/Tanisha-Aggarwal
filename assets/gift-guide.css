@@ -22,13 +22,13 @@
 .gg-announcement__cta{
   background: #FFF544;
   padding: 8px 30px;
+  transition: margin-left 0.3s ease;
 }
 
 .gg-announcement__cta:hover{
   background: #000000;
  .gg-btn{
   color: #FFF544;
-  transition: margin-left 0.3s ease;
   }
 }
 
