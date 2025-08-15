@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "banner": {
+      "type": "custom-gift-banner",
+      "settings": {}
+    },
+    "grid": {
+      "type": "custom-product-grid",
+      "settings": {}
+    }
+  },
+  "order": ["banner", "grid"]
+}

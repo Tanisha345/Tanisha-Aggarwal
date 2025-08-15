@@ -1,0 +1,61 @@
+{% comment %}
+  Custom Banner section (all red-boxed texts editable + animated buttons)
+  No Dawn components used.
+{% endcomment %}
+
+{{ 'gift-guide.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gift-guide.js' | asset_url }}" defer="defer"></script>
+
+<section class="gg-announcement">
+  <div class="gg-container gg-announcement__bar">
+    <div class="gg-announcement__brand">{{ section.settings.brand_text }}</div>
+    <div class="gg-announcement__msg">{{ section.settings.announce_text }}</div>
+    <div class="gg-announcement__cta">
+      <a class="gg-btn" href="{{ section.settings.announce_button_url }}">
+        {{ section.settings.announce_button_label }}
+        <span class="gg-btn__arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="gg-hero">
+  {% if section.settings.bg_image != blank %}
+    {{ section.settings.bg_image | image_url: width: 2880 | image_tag: class: 'gg-hero__bg', alt: section.settings.heading }}
+  {% else %}
+    <img class="gg-hero__bg" src="https://cdn.shopify.com/s/files/1/0000/0000/files/placeholder-hero.png" alt="">
+  {% endif %}
+
+  <div class="gg-hero__inner gg-container">
+    <h1 class="gg-hero__heading">{{ section.settings.heading }}</h1>
+    <p class="gg-hero__subtext">{{ section.settings.subtext }}</p>
+    <a class="gg-btn gg-hero__cta" href="{{ section.settings.shop_button_url }}">
+      {{ section.settings.shop_button_label }} <span class="gg-btn__arrow">→</span>
+    </a>
+  </div>
+
+  <div class="gg-hero__strip">
+    {{ section.settings.strip_text }}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gift Guide Banner (Custom)",
+  "settings": [
+    { "type": "text", "id": "brand_text", "label": "Brand (top-left)", "default": "TISSO VISON" },
+    { "type": "text", "id": "announce_text", "label": "Top message", "default": "Find the ideal gift for your loved ones." },
+    { "type": "text", "id": "announce_button_label", "label": "Top button label", "default": "CHOOSE GIFT" },
+    { "type": "url",  "id": "announce_button_url",   "label": "Top button link" },
+
+    { "type": "image_picker", "id": "bg_image", "label": "Hero background image" },
+    { "type": "text", "id": "heading", "label": "Hero heading", "default": "The Gift Guide" },
+    { "type": "textarea", "id": "subtext", "label": "Hero paragraph", "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season." },
+    { "type": "text", "id": "shop_button_label", "label": "Hero button label", "default": "SHOP NOW" },
+    { "type": "url", "id": "shop_button_url", "label": "Hero button link" },
+    { "type": "text", "id": "strip_text", "label": "Bottom strip text", "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL" }
+  ],
+  "blocks": [],
+  "presets": [{ "name": "Gift Guide Banner (Custom)" }]
+}
+{% endschema %}
