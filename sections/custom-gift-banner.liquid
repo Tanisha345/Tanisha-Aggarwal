@@ -6,6 +6,9 @@
 {{ 'gift-guide.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'gift-guide.js' | asset_url }}" defer="defer"></script>
 
+{% comment %}
+  Top-bar of the page
+{% endcomment %}
 <section class="gg-announcement">
   <div class="gg-announcement__bar">
    <img src= {{ 'tissovison.png' | asset_url }} alt="Shop logo" width="150" height="20">
