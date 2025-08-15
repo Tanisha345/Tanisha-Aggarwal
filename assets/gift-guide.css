@@ -9,3 +9,7 @@
   justify-content: space-between;
   padding: 20px;
 }
+
+.gg-announcement__msg{
+  font-family: 'Jost', sans-serif;
+}
