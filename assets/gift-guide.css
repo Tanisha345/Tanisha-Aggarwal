@@ -5,4 +5,5 @@
 .gg-announcement__bar{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
