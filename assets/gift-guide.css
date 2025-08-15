@@ -49,7 +49,7 @@
   transform: scaleX(1);
 }
 
-.bannerSection{
+.banner-section{
   display: flex;
   flex-direction: row;
 }
