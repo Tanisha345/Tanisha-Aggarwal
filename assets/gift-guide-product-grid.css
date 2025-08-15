@@ -33,4 +33,6 @@
     top: 50%;
     left: 50%;
     background: #FFFFFF;
+    padding: 10px;
+    border-radius: 100px;
 }
