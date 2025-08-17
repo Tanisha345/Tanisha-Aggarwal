@@ -82,7 +82,8 @@
 }
 
 #modalTitle{
-  font-family
+  font-family: 'Jost', sans-serif;
+  letter-spacing: 0px;
 }
 
 .modal-details{
