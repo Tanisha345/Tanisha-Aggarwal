@@ -26,6 +26,9 @@
       </div>
     {% endfor %}
   </div>
+  {% for variant in product.variants %}
+  <p>{{ variant.title }} → {{ variant.id }}</p>
+{% endfor %}
 </div>
 
 <!-- Modal -->
