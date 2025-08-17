@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentVariants = [];
   let selectedColor = null;
   let selectedSize = null;
-  const ADDON_VARIANT_ID = 50498394489128;
+  const ADDON_VARIANT_ID = 9735017431336;
 
   // Color name -> CSS mapping
   const colorMap = {
@@ -113,54 +113,50 @@ sizeSelect.addEventListener("change", function() {
 
 /** --- Add to cart --- */
 addToCartBtn.addEventListener("click", function() {
-  if (!selectedColor || !selectedSize) {
-    alert("Please select both color and size");
-    return;
-  }
-
-  const variant = currentVariants.find(v => v.option1 === selectedSize && v.option2 === selectedColor);
-  if (!variant) {
-    alert("That combination is not available.");
-    return;
-  }
-
-  // Step 1: Add the main product
-  fetch('/cart/add.js', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({ id: variant.id, quantity: 1 })
-  })
-  .then(res => {
-    if (!res.ok) throw new Error("Main product failed");
-    return res.json();
-  })
-  .then(data => {
-    console.log("✅ Main product added:", data);
-
-    // Step 2: Condition → Auto add accessory
-    if (selectedSize === "Medium" && selectedColor.toLowerCase() === "black") {
-      console.log("👉 Adding addon...");
-      return fetch('/cart/add.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ id: ADDON_VARIANT_ID, quantity: 1 })
-      })
-      .then(res => {
-        if (!res.ok) throw new Error("Addon failed");
-        return res.json();
-      });
+    if (!selectedColor || !selectedSize) {
+      alert("Please select both color and size");
+      return;
     }
-    return null;
-  })
-  .then(addon => {
-    if (addon) {
-      console.log("✅ Addon added:", addon);
+
+    const variant = currentVariants.find(v => v.option1 === selectedSize && v.option2 === selectedColor);
+    if (!variant) {
+      alert("That combination is not available.");
+      return;
     }
-    alert("Item(s) added to cart!");
-    modal.style.display = 'none';
-  })
-  .catch(err => {
-    console.error("❌ Error:", err);
-    alert("Something went wrong. Please try again.");
+
+    // Step 1: Add the main product
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ id: variant.id, quantity: 1 })
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log("Main product added:", data);
+
+      // Step 2: Condition → Auto add accessory
+      if (selectedSize === "Medium" && selectedColor.toLowerCase() === "black") {
+        return fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ id: ADDON_VARIANT_ID, quantity: 1 })
+        });
+      }
+    })
+    .then(res => res ? res.json() : null)
+    .then(addon => {
+      if (addon) console.log("Addon added:", addon);
+      alert("Item(s) added to cart!");
+      modal.style.display = 'none';
+    })
+    .catch(err => {
+      console.error("Error:", err);
+      alert("Something went wrong. Please try again.");
+    });
   });
+
+
+  /** ---------------- Close modal ---------------- */
+  closeModal.addEventListener('click', () => { modal.style.display = 'none'; });
+  window.addEventListener('click', (event) => { if (event.target === modal) modal.style.display = 'none'; });
 });
