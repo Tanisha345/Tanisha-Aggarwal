@@ -88,6 +88,11 @@
   font-size: 16px;
 }
 
+.price{
+  font-family: "Lustria", serif;
+  font-size: 16px;
+  letter-spacing: 0px;
+}
 .modal-details{
   display: flex;
   flex-direction: column;
