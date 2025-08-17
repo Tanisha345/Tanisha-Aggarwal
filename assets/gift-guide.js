@@ -61,5 +61,13 @@ document.addEventListener('DOMContentLoaded', function() {
       modal.style.display = 'none';
     }
   });
+  const sizes = JSON.parse(this.dataset.sizes);
+      sizeSelect.innerHTML = "";
+      sizes.forEach(size => {
+        const opt = document.createElement("option");
+        opt.value = size;
+        opt.textContent = size;
+        sizeSelect.appendChild(opt);
+      });
 });
 
