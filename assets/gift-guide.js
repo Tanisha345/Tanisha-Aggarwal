@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentVariants = [];
   let selectedColor = null;
   let selectedSize = null;
-  const ADDON_VARIANT_ID = dark-winter-jacket;
+  const ADDON_VARIANT_ID = 'dark-winter-jacket';
 
   // Color name -> CSS mapping
   const colorMap = {
