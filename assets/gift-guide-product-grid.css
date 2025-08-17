@@ -67,7 +67,7 @@
   cursor: pointer;
   padding: 5px;
   display: flex;
-  justify-self: flex-end;
+  justify-content: flex-end;
 }
 
 .modal-header{
