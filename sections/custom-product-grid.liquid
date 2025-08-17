@@ -27,7 +27,9 @@
     {% endfor %}
   </div>
   {% for product in collections.add-on.products%}
+    {% for variant in product.variants %}
   <p>{{ variant.title }} - {{variant.id }} </p>
+    {% endfor %}
 {% endfor %}
 </div>
 
