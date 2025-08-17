@@ -117,11 +117,11 @@
 .color-box-selector {
   display: flex;
   width: 100%;
+  border: 1px solid #000;
 }
 
 .color-option {
   display: flex;
-  border: 1px solid #000;
   cursor: pointer;
   transition: all 0.3s ease;
 }
