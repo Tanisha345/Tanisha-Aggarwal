@@ -20,7 +20,6 @@
           data-image="{{ media.src | img_url: '600x600' }}"
           data-description="{{ products.description | strip_html | truncate: 150 }}"
           data-variants='{{ products.variants | map: "option2" | uniq | json }}'>
-         >
           +
         </div>
         </div>
