@@ -77,7 +77,7 @@ placeholder.value = "";
 placeholder.textContent = "Choose your size";
 placeholder.disabled = true;
 placeholder.selected = true;
-sizeSelect.appendChild(placeholder);
+
 
 // add real sizes
 sizes.forEach(size => {
