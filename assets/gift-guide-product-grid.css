@@ -63,3 +63,9 @@
   font-size: 1.5rem;
   cursor: pointer;
 }
+
+.modal-header{
+  display: flex;
+  flex-direction: row;
+  
+}
