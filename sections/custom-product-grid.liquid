@@ -38,13 +38,6 @@
       </div>
     {% endfor %}
   </div>
-
-  <!-- Add-on Products (debug/variant listing) -->
-  {% for product in collections.add-on.products %}
-    {% for variant in product.variants %}
-      <p>{{ variant.title }} - {{ variant.id }}</p>
-    {% endfor %}
-  {% endfor %}
 </div>
 
 <!-- Product Quick View Modal -->
