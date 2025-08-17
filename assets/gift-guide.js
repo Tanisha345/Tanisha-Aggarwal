@@ -173,6 +173,15 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('modalDescription').innerText = this.dataset.description;
       const variants = JSON.parse(this.dataset.variants);
       modal.style.display = 'block';
+      colorBox.innerHTML = "";
+
+      // add color buttons dynamically
+      variants.forEach(color => {
+        const div = document.createElement("div");
+        div.classList.add("color-option");
+        div.textContent = color;
+        colorBox.appendChild(div);
+      });
     });
   });
 
