@@ -149,3 +149,19 @@
   overflow-y: auto;    /* scroll if too many sizes */
   cursor: pointer;
 }
+
+.size-dropdown {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path fill="none" stroke="black" stroke-width="2" d="M2 7l10 10L22 7"/></svg>') no-repeat right 10px center;
+  appearance: none; /* remove default arrow */
+  cursor: pointer;
+}
+
+.size-dropdown:focus {
+  border-color: #000;
+  outline: none;
+}

@@ -67,14 +67,26 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
       /** ---------------- Sizes ---------------- */
-      const sizes = JSON.parse(this.dataset.sizes || "[]");
-      sizeSelect.innerHTML = "";
-      sizes.forEach(size => {
-        const opt = document.createElement("option");
-        opt.value = size;
-        opt.textContent = size;
-        sizeSelect.appendChild(opt);
-      });
+      /** ---------------- Sizes ---------------- */
+const sizes = JSON.parse(this.dataset.sizes || "[]");
+sizeSelect.innerHTML = "";
+
+// add placeholder
+const placeholder = document.createElement("option");
+placeholder.value = "";
+placeholder.textContent = "Choose your size";
+placeholder.disabled = true;
+placeholder.selected = true;
+sizeSelect.appendChild(placeholder);
+
+// add real sizes
+sizes.forEach(size => {
+  const opt = document.createElement("option");
+  opt.value = size;
+  opt.textContent = size;
+  sizeSelect.appendChild(opt);
+});
+
     });
   });
 
