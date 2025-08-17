@@ -176,12 +176,28 @@ document.addEventListener('DOMContentLoaded', function() {
       colorBox.innerHTML = "";
 
       // add color buttons dynamically
-      variants.forEach(color => {
-        const div = document.createElement("div");
-        div.classList.add("color-option");
-        div.textContent = color;
-        colorBox.appendChild(div);
-      });
+     variants.forEach(color => {
+  const div = document.createElement("div");
+  div.classList.add("color-option");
+
+  // small color swatch
+  const swatch = document.createElement("span");
+  swatch.classList.add("color-swatch");
+  swatch.style.backgroundColor = color.toLowerCase(); // assumes color names like "Black", "Blue"
+
+  const label = document.createElement("span");
+  label.textContent = color;
+
+  div.appendChild(swatch);
+  div.appendChild(label);
+  colorBox.appendChild(div);
+});
+
+// set equal widths
+const options = colorBox.querySelectorAll(".color-option");
+options.forEach(opt => {
+  opt.style.flex = `1 1 ${100 / options.length}%`;
+});
     });
   });
 
