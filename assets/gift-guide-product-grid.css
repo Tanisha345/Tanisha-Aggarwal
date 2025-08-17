@@ -123,6 +123,7 @@
 .color-option {
   display: flex;
   cursor: pointer;
+  width: 50%;
   transition: all 0.3s ease;
 }
 
