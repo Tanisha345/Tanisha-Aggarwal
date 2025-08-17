@@ -113,33 +113,49 @@ sizeSelect.addEventListener("change", function() {
 
 /** --- Add to cart --- */
 addToCartBtn.addEventListener("click", function() {
-  if (!selectedColor || !selectedSize) {
-    alert("Please select color and size");
-    return;
-  }
+    if (!selectedColor || !selectedSize) {
+      alert("Please select both color and size");
+      return;
+    }
 
-  const variant = currentVariants.find(v => v.option1 === selectedSize && v.option2 === selectedColor);
-  if (!variant) {
-    alert("Variant not available");
-    return;
-  }
+    const variant = currentVariants.find(v => v.option1 === selectedSize && v.option2 === selectedColor);
+    if (!variant) {
+      alert("That combination is not available.");
+      return;
+    }
 
-  fetch('/cart/add.js', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({ id: variant.id, quantity: 1 })
-  })
-  .then(res => res.json())
-  .then(data => {
-    console.log("Added to cart:", data);
-    alert("Item added to cart!");
-    modal.style.display = 'none';
-  })
-  .catch(err => {
-    console.error("Error:", err);
-    alert("Something went wrong. Please try again.");
+    // Step 1: Add the main product
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ id: variant.id, quantity: 1 })
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log("Main product added:", data);
+
+      // Step 2: Condition → Auto add accessory
+      // 👉 Example: If size = "Medium" AND color = "Black"
+      if (selectedSize === "Medium" && selectedColor.toLowerCase() === "black") {
+        return fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ id: ADDON_VARIANT_ID, quantity: 1 })
+        });
+      }
+    })
+    .then(res => res ? res.json() : null)
+    .then(addon => {
+      if (addon) console.log("Addon added:", addon);
+      alert("Item(s) added to cart!");
+      modal.style.display = 'none';
+    })
+    .catch(err => {
+      console.error("Error:", err);
+      alert("Something went wrong. Please try again.");
+    });
   });
-});
+
 
   /** ---------------- Close modal ---------------- */
   closeModal.addEventListener('click', () => { modal.style.display = 'none'; });
