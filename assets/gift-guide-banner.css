@@ -1,66 +1,82 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+/* gift-guide-banner.css */
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap');
 
-*{
- font-family: 'Jost', sans-serif;
- letter-spacing: 0px;
+* {
+  font-family: 'Jost', sans-serif;
+  letter-spacing: 0;
 }
+
+/* ================= Announcement Bars ================= */
 .gg-announcement {
   width: 100%;
   height: 64px;
 }
 
-.gg-announcement__bar{
+.gg-announcement__bar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items:center;
+  align-items: center;
   padding: 8px 20px;
   background: #F5F5F5;
 }
 
-.gg-announcement__msg{
+.gg-announcement__msg {
   font-weight: 400;
-  color: #000000;
+  color: #000;
   font-size: 16px;
-
 }
 
-.gg-btn{
+.gg-bottom-bar {
+  justify-content: center;
+  padding: 2px 0;
+}
+
+/* ================= Buttons ================= */
+.gg-btn,
+.gg-shop-btn {
+  display: inline-block;
   padding: 8px 20px;
   font-weight: 400;
   border: none;
-  background-color: #FFF554;
-  color: #000000;
-  transition: all 0.4s ease-out;
   position: relative;
+  transition: all 0.4s ease-out;
 }
 
-.gg-btn:hover{
-  background-color: #000000;
-  color: #FFFFFF;
+.gg-btn {
+  background-color: #FFF554;
+  color: #000;
 }
 
-.gg-btn::before{
-  content: "";
-  position: absolute;
-  transform: scaleX(0);
-  transform-origin: 0 0;
-  z-index: -1;
-  transition: transform 0.5s;
-  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+.gg-btn:hover {
+  background-color: #000;
+  color: #FFF;
 }
 
-.gg-btn:hover::before{
-  transform: scaleX(1);
+.gg-shop-btn {
+  width: 220px;
+  height: 50px;
+  background-color: #000;
+  color: #FFF;
 }
 
-.banner-section{
+.gg-shop-btn:hover {
+  background-color: #FFF554;
+  color: #000;
+}
+
+/* ================= Banner Section ================= */
+.gg-banner-bg {
+  width: 100%;
+  height: 100%;
+}
+
+.banner-section {
   display: flex;
   flex-direction: row;
-  
 }
 
-.banner-section-textarea{
+.banner-section-textarea {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -70,61 +86,18 @@
   margin-bottom: 20px;
 }
 
-.heading{
+.heading {
   font-weight: 500;
   font-size: 70px;
-  color: #000000;
+  color: #000;
 }
 
-.subheading{
+.subheading {
   font-weight: 400;
   font-size: 20px;
-  color: #000000;
-  justify-self: center;
+  color: #000;
 }
 
-
-
-.banner-section-imagearea{
+.banner-section-imagearea {
   width: 60%;
-  
 }
-
-.gg-shop-btn{
-  width: 220px;
-  height: 50px;
-  padding: 8px 20px;
-  font-weight: 400;
-  border: none;
-  background-color: #000000;
-  color: #FFFFFF;
-  transition: all 0.4s ease-out;
-  position: relative;
-}
-
-.gg-shop-btn:hover{
- 
-  background-color: #FFF554;
-  color: #000000;
-}
-
-.gg-shop-btn::before{
-  content: "";
-  position: absolute;
-  transform: scaleX(0);
-  transform-origin: 0 0;
-  z-index: -1;
-  transition: transform 0.5s;
-  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
-}
-
-.gg-shop-btn:hover::before{
-  transform: scaleX(1);
-}
-
-.gg-bottom-bar{
-  justify-content:center;
-  padding: 2px 0px;
-}
-
-
