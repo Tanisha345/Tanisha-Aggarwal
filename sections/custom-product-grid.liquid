@@ -5,49 +5,71 @@
   - If selected options include Black + Medium, auto-add addon product (selected here)
 {% endcomment %}
 
-{{ 'gift-guide.css' | asset_url | stylesheet_tag }}
+{{ 'gift-guide-product-grid.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'gift-guide.js' | asset_url }}" defer="defer"></script>
 
-<section class="gg-grid">
-  <div class="gg-container" data-gg-grid-root
-       data-addon-variant-id="{% if section.settings.addon_product and section.settings.addon_product.selected_or_first_available_variant %}{{ section.settings.addon_product.selected_or_first_available_variant.id }}{% endif %}">
-    <h2 class="gg-grid__title">{{ section.settings.title }}</h2>
+{% assign jacket = all_products["soft-winter-jacket"] %}
+{% assign jacket_variant_id = jacket.selected_or_first_available_variant.id %}
 
-    <div class="gg-grid__wrap">
-      {% for block in section.blocks %}
-        {% assign product = block.settings.product %}
-        {% if product != blank %}
-          <article class="gg-card">
-            {% if product.featured_image %}
-              {{ product.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: product.title }}
-            {% endif %}
-            <button class="gg-hotspot" type="button"
-                    data-gg-hotspot
-                    aria-haspopup="dialog"
-                    aria-label="Quick view"
-                    data-handle="{{ product.handle }}">+</button>
-          </article>
-        {% endif %}
+<div class="product-grid-container">
+  <div class="product-grid-heading">{{ section.settings.heading-text }}</div>
+  <div class="grid-container">
+    {% for products in collections.gift-guide.products %}
+       {% for media in products.media %}
+        <div class="image-container">
+        <img class="product-image"  src="{{ media.src | img_url: '600x600' }}" alt="{{ products.title }}" width="100%" height="100%">
+         <div class="plus-icon"
+          data-title="{{ products.title }}"
+          data-image="{{ media.src | img_url: '600x600' }}"
+          data-description="{{ products.description | strip_html | truncate: 150 }}"
+          data-variants='{{ products.variants | map: "option2" | uniq | json }}'
+          data-sizes='{{ products.variants | map: "option1" | uniq | json }}'>
+          +
+        </div>
+        </div>
+        {% endfor %}
       {% endfor %}
-    </div>
+    
   </div>
-</section>
+</div>
 
-{%- comment -%} A single modal element will be injected by JS when first opened {%- endcomment -%}
+{% comment %}
+  modal for adding to cart
+{% endcomment %}
+
+<!-- Modal -->
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <div class="close">&times;</div>
+    <div class="modal-header">
+      <img id="modalImage" src="" alt="" width="120px" height="auto">
+      <div class="modal-details">
+        <div id="modalTitle"></div>
+        <div class="price">980,000€</div>
+        <div id="modalDescription"></div>
+      </div>
+    </div>
+    <p class="color-text">Color</p>
+    <div class="color-box-selector">
+    </div>
+     <p class="color-text">Size</p>
+<select id="sizeSelect" class="size-dropdown">
+  <option value="" disabled selected>Choose your size</option>
+</select>
+<button class="gg-btn-cart" >
+        ADD TO CART  →
+      </button>
+  </div>
+</div>
+
 
 {% schema %}
 {
-  "name": "Gift Guide Grid (Custom)",
+  "name": "Gift Guide Grid",
   "settings": [
-    { "type": "text", "id": "title", "label": "Title", "default": "Tisso vison in the wild" },
-    { "type": "product", "id": "addon_product", "label": "Auto-add product (Soft Winter Jacket)" }
+    { "type": "text", "id": "heading-text", "label": "Heading for the grid", "default": "Tisso vision in the wild" },
   ],
-  "blocks": [
-    { "type": "product", "name": "Grid Item", "settings": [
-      { "type": "product", "id": "product", "label": "Product" }
-    ]}
-  ],
-  "max_blocks": 6,
-  "presets": [{ "name": "Gift Guide Grid (Custom)" }]
+  "blocks": [],
+  "presets": [{ "name": "Gift Guide Banner (Custom)" }]
 }
 {% endschema %}

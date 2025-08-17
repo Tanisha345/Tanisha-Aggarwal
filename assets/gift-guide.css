@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+ font-family: 'Jost', sans-serif;
+ letter-spacing: 0px;
+}
 .gg-announcement {
   width: 100%;
-  height: fit-content;
+  height: 64px;
 }
 
 .gg-announcement__bar{
@@ -14,14 +19,14 @@
 }
 
 .gg-announcement__msg{
-  font-family: 'Jost', sans-serif;
   font-weight: 400;
   color: #000000;
+  font-size: 16px;
+
 }
 
 .gg-btn{
   padding: 8px 20px;
-  font-family: 'Jost', sans-serif;
   font-weight: 400;
   border: none;
   background-color: #FFF554;
@@ -47,6 +52,79 @@
 
 .gg-btn:hover::before{
   transform: scaleX(1);
+}
+
+.banner-section{
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.banner-section-textarea{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 40%;
+  justify-content: center;
+  margin-left: 100px;
+  margin-bottom: 20px;
+}
+
+.heading{
+  font-weight: 500;
+  font-size: 70px;
+  color: #000000;
+}
+
+.subheading{
+  font-weight: 400;
+  font-size: 20px;
+  color: #000000;
+  justify-self: center;
+}
+
+
+
+.banner-section-imagearea{
+  width: 60%;
+  
+}
+
+.gg-shop-btn{
+  width: 220px;
+  height: 50px;
+  padding: 8px 20px;
+  font-weight: 400;
+  border: none;
+  background-color: #000000;
+  color: #FFFFFF;
+  transition: all 0.4s ease-out;
+  position: relative;
+}
+
+.gg-shop-btn:hover{
+ 
+  background-color: #FFF554;
+  color: #000000;
+}
+
+.gg-shop-btn::before{
+  content: "";
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  z-index: -1;
+  transition: transform 0.5s;
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+}
+
+.gg-shop-btn:hover::before{
+  transform: scaleX(1);
+}
+
+.gg-bottom-bar{
+  justify-content:center;
+  padding: 2px 0px;
 }
 
 

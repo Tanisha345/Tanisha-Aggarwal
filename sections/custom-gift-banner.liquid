@@ -6,19 +6,36 @@
 {{ 'gift-guide.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'gift-guide.js' | asset_url }}" defer="defer"></script>
 
+{% comment %}
+  Top-bar of the page
+{% endcomment %}
 <section class="gg-announcement">
   <div class="gg-announcement__bar">
    <img src= {{ 'tissovison.png' | asset_url }} alt="Shop logo" width="150" height="20">
     <div class="gg-announcement__msg">{{ section.settings.announce_text }}</div>
-    <div class="gg-announcement__cta">
-      <button class="gg-btn btn-banner" href="{{ section.settings.announce_button_url }}">
+      <button class="gg-btn" href="{{ section.settings.announce_button_url }}">
         {{ section.settings.announce_button_label }} →
       </button>
-    </div>
   </div>
 </section>
 <img src="{{ 'Frame1.png' | asset_url }}" alt="banner" width="100%" height="100%">
-
+<div class="banner-section">
+  <div class="banner-section-textarea">
+    <div class="heading">{{ section.settings.heading }}</div>
+    <div class="subheading">{{ section.settings.subtext }}</div>
+    <button class="gg-shop-btn" href="{{ section.settings.shop_button_url }}">
+        {{ section.settings.shop_button_label }} →
+      </button>
+  </div>
+  <div class="banner-section-imagearea">
+    <img src="{{ 'Frame2.png' | asset_url }}" alt="banner" width="100%" height="100%">
+  </div>
+</div>
+<section class="gg-announcement">
+  <div class="gg-announcement__bar gg-bottom-bar">
+    <div class="gg-announcement__msg ">{{ section.settings.strip_text }}</div>
+  </div>
+</section>
 <section class="gg-hero">
  
   

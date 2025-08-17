@@ -1,159 +1,112 @@
 /* Vanilla JS for quick view, variant picking, and AJAX add-to-cart */
 
-(function () {
-  // Find grid root to get addon variant id
-  const gridRoot = document.querySelector("[data-gg-grid-root]");
-  const addonVariantId = gridRoot ? gridRoot.dataset.addonVariantId : null;
+document.addEventListener('DOMContentLoaded', function() {
+  const plusIcons = document.querySelectorAll('.plus-icon');
+  const modal = document.getElementById('productModal');
+  const closeModal = modal.querySelector('.close');
+  const colorBox = modal.querySelector(".color-box-selector");
+  const sizeSelect = modal.querySelector("#sizeSelect");
 
-  // ---------- Helpers ----------
-  const qs = (s, el = document) => el.querySelector(s);
-  const qsa = (s, el = document) => Array.from(el.querySelectorAll(s));
+  // mapping Shopify variant names -> CSS colors
+  const colorMap = {
+    "white": "#ffffff",
+    "black": "#000000",
+    "blue": "#0000ff",
+    "navy": "#000080",
+    "red": "#ff0000",
+    "green": "#008000",
+    "dark green": "#006400",
+    "yellow": "#ffff00",
+    "grey": "#808080",
+    "gray": "#808080",
+    "beige": "#f5f5dc",
+    "pink": "#ffc0cb",
+    "purple": "#800080",
+    // add more mappings if needed
+  };
 
-  const openModal = (html) => {
-    let modal = qs("#gg-modal");
-    if (!modal) {
-      modal = document.createElement("div");
-      modal.id = "gg-modal";
-      modal.className = "gg-modal";
-      modal.innerHTML = `
-        <div class="gg-modal__overlay" data-close></div>
-        <div class="gg-modal__dialog" role="dialog" aria-modal="true">
-          <button class="gg-modal__close" aria-label="Close" data-close>&times;</button>
-          <div class="gg-modal__media"></div>
-          <div class="gg-modal__body"></div>
-        </div>
-      `;
-      document.body.appendChild(modal);
-      modal.addEventListener("click", (e) => {
-        if (e.target.hasAttribute("data-close")) closeModal();
+  // handle click on product "plus" icon
+  plusIcons.forEach(icon => {
+    icon.addEventListener('click', function() {
+      // populate modal info
+      document.getElementById('modalTitle').innerText = this.dataset.title;
+      document.getElementById('modalImage').src = this.dataset.image;
+      document.getElementById('modalDescription').innerText = this.dataset.description;
+
+      // show modal
+      modal.style.display = 'block';
+
+      /** ---------------- Colors ---------------- */
+      const variants = JSON.parse(this.dataset.variants || "[]");
+      colorBox.innerHTML = "";
+
+      variants.forEach(color => {
+        const div = document.createElement("div");
+        div.classList.add("color-option");
+
+        // color swatch
+        const swatch = document.createElement("span");
+        swatch.classList.add("color-swatch");
+
+        const colorName = color.toLowerCase().trim();
+        const swatchColor = colorMap[colorName] || colorName; // fallback if valid css color
+        swatch.style.backgroundColor = swatchColor;
+
+        const label = document.createElement("span");
+        label.textContent = color;
+
+        div.appendChild(swatch);
+        div.appendChild(label);
+        colorBox.appendChild(div);
       });
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeModal();
+
+      // set equal widths
+      const options = colorBox.querySelectorAll(".color-option");
+      options.forEach(opt => {
+        opt.style.flex = `1 1 ${100 / options.length}%`;
       });
-    }
-    qs(".gg-modal__body", modal).innerHTML = html.body;
-    qs(".gg-modal__media", modal).innerHTML = html.media;
-    modal.removeAttribute("hidden");
-  };
 
-  const closeModal = () => {
-    const modal = qs("#gg-modal");
-    if (modal) modal.setAttribute("hidden", "");
-  };
+      /** ---------------- Sizes ---------------- */
+      /** ---------------- Sizes ---------------- */
+const sizes = JSON.parse(this.dataset.sizes || "[]");
+sizeSelect.innerHTML = "";
 
-  const fetchProduct = async (handle) => {
-    const res = await fetch(`/products/${handle}.js`);
-    if (!res.ok) throw new Error("Product fetch failed");
-    return res.json();
-  };
+// add placeholder
+const placeholder = document.createElement("option");
+placeholder.value = "";
+placeholder.textContent = "Choose your size";
+placeholder.disabled = true;
+placeholder.selected = true;
+sizeSelect.appendChild(placeholder);
 
-  const findVariantId = (product, chosen) => {
-    // chosen is array of option values in order
-    const v = product.variants.find((vv) =>
-      [vv.option1, vv.option2, vv.option3]
-        .filter(Boolean)
-        .every((opt, idx) => opt === chosen[idx])
-    );
-    return v ? v.id : product.variants[0]?.id;
-  };
+// add real sizes
+sizes.forEach(size => {
+  const opt = document.createElement("option");
+  opt.value = size;
+  opt.textContent = size;
+  sizeSelect.appendChild(opt);
+});
 
-  const addToCart = async (variantId, qty = 1) => {
-    const res = await fetch("/cart/add.js", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({ id: Number(variantId), quantity: qty }),
-    });
-    if (!res.ok) throw new Error("Add to cart failed");
-    return res.json();
-  };
-
-  const buildOptionSelectors = (product) => {
-    const optHtml = product.options
-      .map((opt, i) => {
-        const values = Array.from(
-          new Set(
-            product.variants.map((v) => v[`option${i + 1}`]).filter(Boolean)
-          )
-        );
-        const id = `gg-opt-${i}-${product.id}`;
-        const label = `<label for="${id}">${opt.name}</label>`;
-        const select = `
-        <select id="${id}" data-opt-index="${i}">
-          ${values.map((v) => `<option value="${v}">${v}</option>`).join("")}
-        </select>
-      `;
-        return `<div>${label}${select}</div>`;
-      })
-      .join("");
-    return `<div class="gg-modal__options">${optHtml}</div>`;
-  };
-
-  const modalTemplate = (product) => {
-    const firstImg = product.images?.[0] || product.featured_image;
-    const media = firstImg
-      ? `<img src="${firstImg}" alt="${product.title}">`
-      : "";
-    const options = product.options?.length
-      ? buildOptionSelectors(product)
-      : "";
-    const body = `
-      <div class="gg-modal__title">${product.title}</div>
-      ${options}
-      <div class="gg-modal__actions">
-        <button class="gg-btn gg-modal__add" data-add data-handle="${product.handle}">
-          ADD TO CART <span class="gg-btn__arrow">→</span>
-        </button>
-      </div>
-    `;
-    return { media, body };
-  };
-
-  // ---------- Wire hotspots ----------
-  qsa("[data-gg-hotspot]").forEach((btn) => {
-    btn.addEventListener("click", async () => {
-      const handle = btn.dataset.handle;
-      try {
-        const product = await fetchProduct(handle);
-        openModal(modalTemplate(product));
-
-        // After modal opens, wire "Add" interaction
-        const modal = document.getElementById("gg-modal");
-        const selects = qsa(".gg-modal select", modal);
-        const getChosen = () => selects.map((s) => s.value);
-        let chosen = selects.length ? getChosen() : [];
-
-        selects.forEach((sel) =>
-          sel.addEventListener("change", () => {
-            chosen = getChosen();
-          })
-        );
-
-        qs("[data-add]", modal).addEventListener("click", async () => {
-          const prod = await fetchProduct(handle); // ensure fresh data
-          const variantId = findVariantId(prod, chosen);
-          await addToCart(variantId, 1);
-
-          // Auto-add rule: if selected options include Black and Medium
-          const lower = chosen.map((v) => (v || "").toLowerCase());
-          const isBlackMedium =
-            lower.includes("black") && lower.includes("medium");
-
-          if (isBlackMedium && addonVariantId) {
-            try {
-              await addToCart(addonVariantId, 1);
-            } catch (e) {
-              console.warn("Addon add failed", e);
-            }
-          }
-
-          closeModal();
-        });
-      } catch (e) {
-        console.error(e);
-      }
     });
   });
-})();
+
+  /** Color selection */
+  colorBox.addEventListener("click", function(e) {
+    const target = e.target.closest(".color-option");
+    if (target) {
+      colorBox.querySelectorAll(".color-option").forEach(opt => opt.classList.remove("selected"));
+      target.classList.add("selected");
+    }
+  });
+
+  /** Close modal */
+  closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+});
