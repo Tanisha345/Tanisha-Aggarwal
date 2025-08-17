@@ -102,3 +102,75 @@
 .banner-section-imagearea {
   width: 60%;
 }
+
+/* ================= Mobile Responsive  ================= */
+@media (max-width: 768px) {
+  /* Top announcement bar */
+  .gg-announcement__bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    height: auto;
+    padding: 12px 10px;
+  }
+
+  /* Banner: stack vertically */
+  .banner-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+  }
+
+  .banner-section-textarea {
+    width: 100%;
+    margin: 20px 0;
+    padding: 0 15px;
+    gap: 12px;
+  }
+
+  .heading {
+    font-size: 32px;
+    font-weight: 600;
+  }
+
+  .subheading {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .gg-shop-btn {
+    width: auto;
+    min-width: 160px;
+    height: 45px;
+    margin: 0 auto;
+  }
+
+  .banner-section-imagearea {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .banner-section-imagearea img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Extra small devices (phones under 480px) */
+@media (max-width: 480px) {
+  .heading {
+    font-size: 26px;
+  }
+
+  .subheading {
+    font-size: 14px;
+  }
+
+  .gg-btn,
+  .gg-shop-btn {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+}
