@@ -84,6 +84,8 @@
 #modalTitle{
   font-family: 'Jost', sans-serif;
   letter-spacing: 0px;
+  font-weight: 300;
+  font-size: 16px;
 }
 
 .modal-details{
