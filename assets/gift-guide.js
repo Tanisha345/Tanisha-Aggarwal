@@ -169,8 +169,8 @@ document.addEventListener('DOMContentLoaded', function() {
     icon.addEventListener('click', function() {
       document.getElementById('modalTitle').innerText = this.dataset.title;
       document.getElementById('modalImage').src = this.dataset.image;
-      document.getElementById('modalDescription').src = this.dataset.description;
-
+      document.getElementById('modalDescription').innerText = this.dataset.description;
+      
       modal.style.display = 'block';
     });
   });
