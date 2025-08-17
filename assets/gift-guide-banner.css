@@ -1,94 +1,130 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
 
-* {
-  font-family: 'Jost', sans-serif;
-  letter-spacing: 0;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+ font-family: 'Jost', sans-serif;
+ letter-spacing: 0px;
 }
-
-/* ========== ANNOUNCEMENT BAR ========== */
 .gg-announcement {
   width: 100%;
+  height: 64px;
 }
 
-.gg-announcement__bar {
+.gg-announcement__bar{
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items:center;
   padding: 8px 20px;
-  background: #f5f5f5;
+  background: #F5F5F5;
 }
 
-.gg-announcement__msg {
-  font-size: 16px;
+.gg-announcement__msg{
   font-weight: 400;
-  color: #000;
+  color: #000000;
+  font-size: 16px;
+
 }
 
-.gg-bottom-bar {
-  justify-content: center;
-  padding: 4px 0;
-}
-
-/* ========== BUTTONS ========== */
-.gg-btn {
-  display: inline-block;
-  padding: 10px 24px;
-  font-weight: 500;
+.gg-btn{
+  padding: 8px 20px;
+  font-weight: 400;
   border: none;
-  text-decoration: none;
-  cursor: pointer;
+  background-color: #FFF554;
+  color: #000000;
+  transition: all 0.4s ease-out;
   position: relative;
-  transition: all 0.3s ease-out;
-  background: #FFF554;
-  color: #000;
 }
 
-.gg-btn:hover {
-  background: #000;
-  color: #fff;
+.gg-btn:hover{
+  background-color: #000000;
+  color: #FFFFFF;
 }
 
-.gg-btn--dark {
-  background: #000;
-  color: #fff;
+.gg-btn::before{
+  content: "";
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  z-index: -1;
+  transition: transform 0.5s;
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
 }
 
-.gg-btn--dark:hover {
-  background: #FFF554;
-  color: #000;
+.gg-btn:hover::before{
+  transform: scaleX(1);
 }
 
-/* ========== BANNER SECTION ========== */
-.banner-section {
+.banner-section{
   display: flex;
-  align-items: center;
-  padding: 60px 100px;
-  gap: 40px;
+  flex-direction: row;
+  
 }
 
-.banner-section-textarea {
-  flex: 1;
+.banner-section-textarea{
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 40%;
+  justify-content: center;
+  margin-left: 100px;
+  margin-bottom: 20px;
 }
 
-.heading {
+.heading{
+  font-weight: 500;
   font-size: 70px;
-  font-weight: 600;
-  color: #000;
+  color: #000000;
 }
 
-.subheading {
-  font-size: 20px;
+.subheading{
   font-weight: 400;
-  color: #000;
-  line-height: 1.5;
+  font-size: 20px;
+  color: #000000;
+  justify-self: center;
 }
 
-.banner-section-imagearea {
-  flex: 1;
+
+
+.banner-section-imagearea{
+  width: 60%;
+  
 }
+
+.gg-shop-btn{
+  width: 220px;
+  height: 50px;
+  padding: 8px 20px;
+  font-weight: 400;
+  border: none;
+  background-color: #000000;
+  color: #FFFFFF;
+  transition: all 0.4s ease-out;
+  position: relative;
+}
+
+.gg-shop-btn:hover{
+ 
+  background-color: #FFF554;
+  color: #000000;
+}
+
+.gg-shop-btn::before{
+  content: "";
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  z-index: -1;
+  transition: transform 0.5s;
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+}
+
+.gg-shop-btn:hover::before{
+  transform: scaleX(1);
+}
+
+.gg-bottom-bar{
+  justify-content:center;
+  padding: 2px 0px;
+}
+
+
