@@ -169,7 +169,6 @@ document.addEventListener('DOMContentLoaded', function() {
     icon.addEventListener('click', function() {
       document.getElementById('modalTitle').innerText = this.dataset.title;
       document.getElementById('modalImage').src = this.dataset.image;
-      document.getElementById('modalPrice').src = this.dataset.price;
       document.getElementById('modalDescription').innerText = this.dataset.description;
       document.getElementById('modalLink').href = this.dataset.link;
       modal.style.display = 'block';
