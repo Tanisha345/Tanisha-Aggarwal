@@ -102,5 +102,6 @@
 #modalDescription{
   font-family: "Jost", sans-serif;
   letter-spacing: -1%;
-
+  font-size: 12px;
+  font-weight: 300;
 }
