@@ -1,50 +1,70 @@
 {% comment %}
-  Gift Guide Product Grid with Quick View
+  Gift Guide Product Grid with Quick View Modal
+  - Displays up to 6 products from "gift-guide" collection
+  - Each product has a quick-view modal with variants
+  - Includes optional add-on products listing
 {% endcomment %}
 
 {{ 'gift-guide-product-grid.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'gift-guide.js' | asset_url }}" defer="defer"></script>
 
 <div class="product-grid-container">
-  <div class="product-grid-heading">{{ section.settings.heading-text }}</div>
+  <!-- Grid Heading -->
+  <div class="product-grid-heading">
+    {{ section.settings.heading-text }}
+  </div>
+
+  <!-- Product Grid -->
   <div class="grid-container">
     {% for product in collections.gift-guide.products limit: 6 %}
       {% assign first_image = product.featured_image | img_url: '600x600' %}
       <div class="image-container">
-        <img class="product-image"
-             src="{{ first_image }}"
-             alt="{{ product.title }}"
-             width="100%"
-             height="100%">
-        <div class="plus-icon"
+        <img 
+          class="product-image"
+          src="{{ first_image }}"
+          alt="{{ product.title }}"
+          width="100%"
+          height="100%"
+        >
+        <div 
+          class="plus-icon"
           data-title="{{ product.title }}"
           data-image="{{ first_image }}"
           data-description="{{ product.description | strip_html | truncate: 150 }}"
-          data-variants='{{ product.variants | json }}'>
+          data-variants='{{ product.variants | json }}'
+        >
           +
         </div>
       </div>
     {% endfor %}
   </div>
-  {% for product in collections.add-on.products%}
+
+  <!-- Add-on Products (debug/variant listing) -->
+  {% for product in collections.add-on.products %}
     {% for variant in product.variants %}
-  <p>{{ variant.title }} - {{variant.id }} </p>
+      <p>{{ variant.title }} - {{ variant.id }}</p>
     {% endfor %}
-{% endfor %}
+  {% endfor %}
 </div>
 
-<!-- Modal -->
+<!-- Product Quick View Modal -->
 <div id="productModal" class="modal">
   <div class="modal-content">
+    
+    <!-- Close Button -->
     <div class="close">&times;</div>
+
+    <!-- Header: Image + Details -->
     <div class="modal-header">
-      <img id="modalImage" src="" alt="" width="120px" height="auto">
+      <img id="modalImage" src="" alt="Product image" width="120px" height="auto">
       <div class="modal-details">
         <div id="modalTitle"></div>
         <div class="price" id="modalPrice"></div>
         <div id="modalDescription"></div>
       </div>
     </div>
+
+    <!-- Variant Selection -->
     <p class="color-text">Color</p>
     <div class="color-box-selector"></div>
 
@@ -53,6 +73,7 @@
       <option value="" disabled selected>Choose your size</option>
     </select>
 
+    <!-- Add to Cart -->
     <button class="gg-btn-cart">ADD TO CART →</button>
   </div>
 </div>
@@ -61,8 +82,15 @@
 {
   "name": "Gift Guide Grid",
   "settings": [
-    { "type": "text", "id": "heading-text", "label": "Heading for the grid", "default": "Tisso vision in the wild" }
+    {
+      "type": "text",
+      "id": "heading-text",
+      "label": "Heading for the grid",
+      "default": "Tisso vision in the wild"
+    }
   ],
-  "presets": [{ "name": "Gift Guide Banner (Custom)" }]
+  "presets": [
+    { "name": "Gift Guide Grid (Custom)" }
+  ]
 }
 {% endschema %}
