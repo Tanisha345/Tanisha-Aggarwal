@@ -129,6 +129,7 @@
 .color-option .color-swatch {
   width: 6px;
   margin-right: 8px;
+  border: 1px solid #000;
 }
 
 .color-option.selected {
