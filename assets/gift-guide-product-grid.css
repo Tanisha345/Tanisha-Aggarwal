@@ -98,3 +98,9 @@
   flex-direction: column;
   gap: 10px;
 }
+
+#modalDescription{
+  font-family: "Jost", sans-serif;
+  letter-spacing: -1%;
+  
+}
