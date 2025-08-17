@@ -75,3 +75,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+#modalImage{
+  object-fit: cover;
+}
