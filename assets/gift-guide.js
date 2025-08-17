@@ -164,6 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const plusIcons = document.querySelectorAll('.plus-icon');
   const modal = document.getElementById('productModal');
   const closeModal = modal.querySelector('.close');
+  const colorBox = modal.querySelector(".color-box-selector");
 
   plusIcons.forEach(icon => {
     icon.addEventListener('click', function() {
