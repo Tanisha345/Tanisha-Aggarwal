@@ -121,10 +121,7 @@
 
 .color-option {
   display: flex;
-  align-items: center;
-  justify-content: center;
   border: 1px solid #000;
-  padding: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
