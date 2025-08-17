@@ -185,6 +185,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  colorBox.addEventListener("click", function(e) {
+    if (e.target.classList.contains("color-option")) {
+      document.querySelectorAll(".color-option").forEach(opt => opt.classList.remove("selected"));
+      e.target.classList.add("selected");
+    }
+  });
+
   closeModal.addEventListener('click', () => {
     modal.style.display = 'none';
   });
