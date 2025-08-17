@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('modalTitle').innerText = this.dataset.title;
       document.getElementById('modalImage').src = this.dataset.image;
       document.getElementById('modalDescription').innerText = this.dataset.description;
-      
+      const variants = JSON.parse(this.dataset.variants);
       modal.style.display = 'block';
     });
   });
