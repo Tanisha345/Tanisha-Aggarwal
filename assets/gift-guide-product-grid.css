@@ -57,6 +57,8 @@
   padding: 20px;
   width: 311px;
   height: fit-content;
+  display:flex;
+  flex-direction: column;
 }
 
 .close {
