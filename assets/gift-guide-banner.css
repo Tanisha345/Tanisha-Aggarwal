@@ -116,7 +116,8 @@
   }
 
   .gg-announcement__msg,
-  .gg-btn{
+  .gg-btn,
+  .gg-banner-bg{
     display:none;
   }
 
