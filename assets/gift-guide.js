@@ -135,7 +135,7 @@ addToCartBtn.addEventListener("click", function() {
       console.log("Main product added:", data, selectedSize, selectedColor);
 
       // Step 2: Condition → Auto add accessory
-      if (selectedSize.toLowerCase() === "Medium" && selectedColor.toLowerCase() === "black") {
+      if (selectedSize.toLowerCase() === "m" && selectedColor.toLowerCase() === "black") {
         return fetch('/cart/add.js', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
