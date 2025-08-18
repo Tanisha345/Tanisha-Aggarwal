@@ -115,6 +115,11 @@
     padding: 12px 10px;
   }
 
+  .gg-announcement__msg,
+  .gg-btn{
+    display:none;
+  }
+
   /* Banner: stack vertically */
   .banner-section {
     flex-direction: column;
