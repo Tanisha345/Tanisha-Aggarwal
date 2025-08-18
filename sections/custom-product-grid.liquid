@@ -69,6 +69,11 @@
     <!-- Add to Cart -->
     <button class="gg-btn-cart">ADD TO CART →</button>
   </div>
+  {%  for product in collections.add_on %}
+    {% for variant in product.variants %}
+      {{ variant.title }} - {{ variant.id }}
+    {% endfor %}
+    {% endfor %}
 </div>
 
 {% schema %}
