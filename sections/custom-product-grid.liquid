@@ -38,6 +38,11 @@
       </div>
     {% endfor %}
   </div>
+  {%  for product in collections.add_on.products %}
+    {% for variant in product.variants %}
+      {{ variant.title }} - {{ variant.id }}
+    {% endfor %}
+    {% endfor %}
 </div>
 
 <!-- Product Quick View Modal -->
@@ -71,11 +76,7 @@
   </div>
   
 </div>
-{%  for product in collections.add_on.products %}
-    {% for variant in product.variants %}
-      {{ variant.title }} - {{ variant.id }}
-    {% endfor %}
-    {% endfor %}
+
 
 {% schema %}
 {
