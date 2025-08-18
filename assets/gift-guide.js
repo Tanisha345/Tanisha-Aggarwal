@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentVariants = [];
   let selectedColor = null;
   let selectedSize = null;
-  const ADDON_VARIANT_ID = 9735017431336;
+  const ADDON_VARIANT_ID = 50498394489128;
 
   // Color name -> CSS mapping
   const colorMap = {
