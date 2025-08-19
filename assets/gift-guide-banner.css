@@ -109,7 +109,8 @@
   .gg-announcement__bar {
     flex-direction: row;
     align-items: center;
-    gap: 4px;
+    justify-content: flex-start;
+    gap: 70px;
     text-align: center;
     height: auto;
     padding: 12px 10px;
