@@ -223,4 +223,9 @@
   .product-grid-container{
     align-items: center;
   }
+
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
 }
