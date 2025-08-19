@@ -168,6 +168,9 @@
     height: auto;
   }
 
+  .subtext2{
+    display: none;
+  }
 }
 
 /* Extra small devices (phones under 480px) */
