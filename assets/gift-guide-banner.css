@@ -103,6 +103,10 @@
   width: 60%;
 }
 
+.subtext-section{
+  gap: 0px;
+}
+
 /* ================= Mobile Responsive  ================= */
 @media (max-width: 768px) {
   /* Top announcement bar */
