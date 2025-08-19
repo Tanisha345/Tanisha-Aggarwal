@@ -213,3 +213,10 @@
 .gg-btn-cart:hover::before {
   transform: scaleX(1);
 }
+
+/* ================= Mobile Responsive  ================= */
+@media (max-width: 768px) {
+  .product-grid-heading{
+    font-size: 20px;
+  }
+}
